@@ -17,10 +17,15 @@ var completedTasksHolder=document.getElementById("completed-tasks");//completed-
 //New task list item
 var createNewTaskElement=function(taskString){
 
-    var listItem=document.createElement("li");
+    var listItem = document.createElement("li");
+    listItem.className = "task-item";
 
     //input (checkbox)
-    var checkBox=document.createElement("input");//checkbx
+    var checkBox = document.createElement("input");//checkbx
+    checkBox.type = "checkbox";
+
+    // Append the 'checkbox' class to the element
+    checkBox.classList.add("checkbox");
     //label
     var label=document.createElement("label");//label
     //input (text)
@@ -29,23 +34,29 @@ var createNewTaskElement=function(taskString){
     var editButton=document.createElement("button");//edit button
 
     //button.delete
-    var deleteButton=document.createElement("button");//delete button
-    var deleteButtonImg=document.createElement("img");//delete button image
+    var deleteButton = document.createElement("button");
+    deleteButton.className = "button delete";//delete button
+    deleteButton.className = "image-delete"
+    var deleteButtonImg = document.createElement("img");//delete button image
+   // document.className = "image-delete";
 
     label.innerText=taskString;
-    label.className='task';
+    label.className='input-label';//changed task to input-label
 
     //Each elements, needs appending
     checkBox.type="checkbox";
     editInput.type="text";
-    editInput.className="task";
+    editInput.className="input input-label";//changed task to input-label
 
     editButton.innerText="Edit"; //innerText encodes special characters, HTML does not.
-    editButton.className="edit";
+    editButton.className="button edit";
 
-    deleteButton.className="delete";
-    deleteButtonImg.src='./remove.svg';
+    deleteButton.className="button delete";
+    deleteButtonImg.src = './remove.svg';
+    deleteButtonImg.className = "image-delete";
+    
     deleteButton.appendChild(deleteButtonImg);
+    
 
 
     //and appending.
@@ -99,7 +110,7 @@ var editTask=function(){
     }
 
     //toggle .editmode on the parent.
-    listItem.classList.toggle("editMode");
+    listItem.classList.toggle("edit-mode");
 };
 
 
